@@ -2,6 +2,8 @@
 
 UI Kit for react-native projects
 
+**Note: This project still under development**
+
 ## Installation
 
 ```sh
