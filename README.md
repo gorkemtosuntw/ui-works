@@ -11,11 +11,22 @@ npm install react-native-ui-works
 ## Usage
 
 ```js
-import { multiply } from 'react-native-ui-works';
+import { PressableButton } from 'react-native-ui-works';
 
-// ...
+const ButtonExample = () => {
+  return (
+    <View>
+      <View style={styles.colors}>
+      <PressableButton
+        size="small"
+        title="Flamingo"
+        color="flamingo"
+        onPress={() => onPick('flamingo')}
+      />
+    </View>
+  );
+};
 
-const result = await multiply(3, 7);
 ```
 
 ## Contributing
