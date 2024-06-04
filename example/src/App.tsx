@@ -1,31 +1,58 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-ui-works';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { ThemeProvider, createTheme } from 'react-native-ui-works';
+import ButtonDemo from './components/ButtonDemo';
+import ColorPicker from './components/ColorPicker';
+import TextDemo from './components/TextDemo';
+import TitleDemo from './components/TitleDemo';
 
-export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+const App = () => {
+  const [primaryColor, setPrimaryColor] = React.useState('jade');
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const appTheme = createTheme({
+    primaryColor,
+    colors: {
+      jade: [
+        '#d2e1d5',
+        '#a5c4ac',
+        '#97bb9f',
+        '#88b192',
+        '#7aa785',
+        '#6b9e78',
+        '#5c8967',
+        '#4e7457',
+        '#324d39',
+        '#253a2a',
+      ],
+    },
+  });
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <ThemeProvider theme={appTheme}>
+      <SafeAreaView style={styles.safeArea}>
+        <ScrollView>
+          <View style={styles.container}>
+            <ColorPicker onPick={setPrimaryColor} />
+            <ButtonDemo />
+            <TextDemo />
+            <TitleDemo />
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </ThemeProvider>
   );
-}
+};
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    padding: 24,
+    gap: 12,
   },
 });
+
+export default App;

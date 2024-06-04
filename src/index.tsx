@@ -1,3 +1,5 @@
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b);
-}
+export { default as PressableButton } from './components/button';
+export { default as Text } from './components/text';
+export { default as Title } from './components/title';
+
+export * from './providers/theme';
